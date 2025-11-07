@@ -1,8 +1,10 @@
 import React from 'react';
+import { useCart } from '../context/CartContext';
 
 const Navbar = () => {
   // TODO: Get cart item count from context
-  const cartItemCount = 0;
+  const { getCartItemCount } = useCart();
+  const cartItemCount = getCartItemCount();
 
   return (
     <nav className="navbar">

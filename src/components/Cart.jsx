@@ -1,31 +1,42 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const Cart = () => {
   const navigate = useNavigate();
   
   // TODO: Get cart state and functions from context
-  const cart = []; // Replace with actual cart from context
-  const cartSubtotal = 0; // Calculate from cart items
+  const { cart, updateQuantity, removeFromCart, clearCart, getCartSubtotal } = useCart();
+  const cartSubtotal = getCartSubtotal(); // Calculate from cart items
 
   const handleIncrement = (productId) => {
     // TODO: Implement increment functionality
-    console.log('Increment cart item:', productId);
+    // *** console.log('Increment cart item:', productId); ***
+    const item = cart.find(i => i.id === productId);
+    if (item) {
+      updateQuantity(productId, item.quantity + 1);
+    }
   };
 
   const handleDecrement = (productId) => {
     // TODO: Implement decrement functionality
-    console.log('Decrement cart item:', productId);
+    // *** console.log('Decrement cart item:', productId); ***
+    const item = cart.find(i => i.id === productId);
+    if (item) {
+      updateQuantity(productId, item.quantity - 1);
+    }
   };
 
   const handleRemove = (productId) => {
     // TODO: Implement remove functionality
-    console.log('Remove cart item:', productId);
+    // *** console.log('Remove cart item:', productId); ***
+    removeFromCart(productId);
   };
 
   const handleBuyNow = () => {
     // TODO: Clear cart and navigate to thank you page
-    console.log('Buy now clicked');
+    // *** console.log('Buy now clicked'); ***
+    clearCart();
     navigate('/thank-you');
   };
 

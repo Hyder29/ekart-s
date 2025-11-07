@@ -11,18 +11,18 @@ const Catalog = () => {
     let products = [...productsData];
     
     // Search functionality - implement filtering by title
-    // if (searchTerm) {
-    //   products = products.filter(product => 
-    //     product.title.toLowerCase().includes(searchTerm.toLowerCase())
-    //   );
-    // }
+    if (searchTerm) {
+      products = products.filter(product => 
+        product.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
     
     // Sort functionality - implement price sorting
-    // if (sortBy === 'price-asc') {
-    //   products.sort((a, b) => a.price - b.price);
-    // } else if (sortBy === 'price-desc') {
-    //   products.sort((a, b) => b.price - a.price);
-    // }
+    if (sortBy === 'price-asc') {
+      products.sort((a, b) => a.price - b.price);
+    } else if (sortBy === 'price-desc') {
+      products.sort((a, b) => b.price - a.price);
+    }
     
     return products;
   }, [searchTerm, sortBy]);

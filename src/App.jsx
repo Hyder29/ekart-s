@@ -1,11 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter,
+  MemoryRouter,
+  Routes,
+  Route,
+} from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import ThankYouPage from './pages/ThankYouPage';
 
 function App() {
+  const Router = process.env.NODE_ENV === 'test' ? MemoryRouter : BrowserRouter;
+
   return (
     <CartProvider>
       <Router>
